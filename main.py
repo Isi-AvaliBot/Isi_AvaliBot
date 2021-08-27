@@ -36,10 +36,13 @@ async def coconut(ctx):
 async def awiki(ctx):
     wik = wiki.serch(ctx.message.content.replace('$wiki ', ''))
     await ctx.send(embed= discord.Embed(title='maybe the answer is here ', description = wik) )
-
 @bot.command()
 async def avali(ctx):
     avalik = pain.ava()
     await ctx.send(avalik) 
+@bot.command()   
+async def isitell(ctx):
+    llet = (ctx.message.content.replace('$isitell ', ''))
+    await ctx.send(llet)
 
 bot.run('ODc2NTE1MDE2MTQzMTQ3MTEw.YRlMOA.q7Cq8x9ncI2tWrjVhyPxFK57RqM')
