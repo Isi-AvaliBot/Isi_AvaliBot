@@ -41,11 +41,6 @@ def serch(raw_string):
     for j in biology_array:
       for biology_case in biology_array:
        output_string = output_string.replace('$awiki ', '')
-       ne_output_string = output_string
-       output_string = output_string.replace(biology_case[0], biology_case[1])
-       if (ne_output_string == output_string):
-         return 'Not found'
-    
+       output_string = output_string.replace(biology_case[0], biology_case[1])  
     return 'https://avali.fandom.com/wiki/'+output_string
-    
 #текст
