@@ -34,7 +34,7 @@ async def coconut(ctx):
     'кокос:coconut:кокоскокcoconut:coconut:кокосcoconutcockкокосcoconutcoconutкокос:coconut:'))
 @bot.command()
 async def awiki(ctx):
-    wik = wiki.serch(ctx.message.content.replace('$wiki ', ''))
+    wik = wiki.serch(ctx.message.content )
     await ctx.send(embed= discord.Embed(title='maybe the answer is here ', description = wik) )
 @bot.command()
 async def avali(ctx):
@@ -42,7 +42,7 @@ async def avali(ctx):
     await ctx.send(avalik) 
 @bot.command()   
 async def isitell(ctx):
-    llet = (ctx.message.content.replace('$isitell ', ''))
-    await ctx.send(llet)
+    says = wiki.say(ctx.message.content)
+    await ctx.send(says)
 
 bot.run('ODc2NTE1MDE2MTQzMTQ3MTEw.YRlMOA.q7Cq8x9ncI2tWrjVhyPxFK57RqM')

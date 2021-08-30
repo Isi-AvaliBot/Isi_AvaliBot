@@ -44,3 +44,6 @@ def serch(raw_string):
        output_string = output_string.replace(biology_case[0], biology_case[1])  
     return 'https://avali.fandom.com/wiki/'+output_string
 #текст
+def say(raw_string):
+   output_string = raw_string
+   return output_string
