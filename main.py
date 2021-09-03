@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import time
-pip install Cybernator
+python3 -m pip install Cybernator
 from Cybernator import poginator as page
 
 from config import settings
