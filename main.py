@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
 import time
-from Cybernator import poginator as page
 
 from config import settings
 import json
