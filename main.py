@@ -51,5 +51,6 @@ async def avali(ctx):
 @bot.command()   
 async def isitell(ctx):
     says = wiki.say(ctx.message.content.replace('$isitell ', ''))
-    await ctx.send(says) 
+    await ctx.send(says)
+
 bot.run('ODc2NTE1MDE2MTQzMTQ3MTEw.YRlMOA.q7Cq8x9ncI2tWrjVhyPxFK57RqM')
