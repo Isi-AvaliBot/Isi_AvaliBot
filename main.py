@@ -2,7 +2,6 @@ import discord
 from discord.ext import commands
 import time
 
-
 from config import settings
 import json
 import requests
@@ -53,6 +52,5 @@ async def avali(ctx):
 async def isitell(ctx):
     says = wiki.say(ctx.message.content.replace('$isitell ', ''))
     await ctx.send(says)
-
 
 bot.run('ODc2NTE1MDE2MTQzMTQ3MTEw.YRlMOA.q7Cq8x9ncI2tWrjVhyPxFK57RqM')
