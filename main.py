@@ -64,4 +64,6 @@ async def awikihelp(ctx):
     message = await ctx.send(embed=embed1)
     pag = page(bot, message, only=ctx.author, use_more=False, embeds=em)
     await pag.start()
+
+
 bot.run('ODc2NTE1MDE2MTQzMTQ3MTEw.YRlMOA.q7Cq8x9ncI2tWrjVhyPxFK57RqM')
