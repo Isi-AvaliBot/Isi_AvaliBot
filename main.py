@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import time
-from Cybernator import Paginator as pagi
+
 
 from config import settings
 import json
