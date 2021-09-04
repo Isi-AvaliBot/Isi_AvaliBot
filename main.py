@@ -62,7 +62,7 @@ async def awikihelp(ctx):
     embed3 = discord.Embed(title='Страница 3', description='описание 3')
     embeds = [embed1, embed2, embed3]
     message = await ctx.send(embed=embed1)
-    pagi = page(bot, message, only=ctx.author, use_more=False, embeds=embeds)
+    pag = pagi(bot, message, only=ctx.author, use_more=False, embeds=embeds)
     await pag.start()
 
 
