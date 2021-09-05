@@ -65,5 +65,5 @@ async def awikihelp(ctx):
     pag = page(bot, message, only=ctx.author, use_more=False, embeds=em)
 
 
-#буква
+#буква+
 bot.run('ODc2NTE1MDE2MTQzMTQ3MTEw.YRlMOA.q7Cq8x9ncI2tWrjVhyPxFK57RqM')
