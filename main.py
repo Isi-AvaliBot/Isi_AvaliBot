@@ -18,7 +18,7 @@ bot.remove_command('help')
 @commands.cooldown(rate=1, per=7, type=commands.BucketType.user)
 @bot.command()
 async def help(ctx):
-    await ctx.send(embed= discord.Embed(description = '**enc <text>** - this function allows you to translate English into aval\n**dec <text>** - this function allows you to translate avalyn into english\n**awiki <text>** - this function allows you to find information by keyword or phrase\n**avali** - get a random picture of avali from the 1,500 library\n**team** - here you can find information about everyone who took part in the development of the bot'))
+    await ctx.send(embed= discord.Embed(description = '**enc <text>** - this function allows you to translate English into aval\n**dec <text>** - this function allows you to translate avalyn into english\n**awiki <text>** - this function allows you to find information by keyword or phrase\n**wikihelp** - list of requests for **awiki**\n**avali** - get a random picture of avali from the 1,500 library\n**team** - here you can find information about everyone who took part in the development of the bot'))
 @commands.cooldown(rate=1, per=7, type=commands.BucketType.user)
 @bot.command()
 async def team(ctx):
