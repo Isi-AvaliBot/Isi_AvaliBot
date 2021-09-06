@@ -54,7 +54,7 @@ async def isitell(ctx):
     says = wiki.say(ctx.message.content.replace('$isitell ', ''))
     await ctx.send(says)
 
-@commands.cooldown(rate=1, per=4, type=commands.BucketType.user)
+@commands.cooldown(rate=1, per=20, type=commands.BucketType.user)
 @bot.command()    
 async def awikihelp(ctx):
     embed1 = discord.Embed(title='Страница 1', description='A\nammonia\narmor\naugmentation\nC\nculture\nD\ndifferences\ndomestic technology\ndrone\nF\nfactions\nflight\nG\ngovernance\ngrowth')
