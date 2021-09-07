@@ -48,11 +48,11 @@ async def awiki(ctx):
 async def avali(ctx):
     avalik = pain.ava()
     await ctx.send(avalik) 
-@commands.cooldown(rate=1, per=4, type=commands.BucketType.user)    
-@bot.command()   
-async def isitell(ctx):
-    says = wiki.say(ctx.message.content.replace('$isitell ', ''))
-    await ctx.send(says)
+#@commands.cooldown(rate=1, per=4, type=commands.BucketType.user)    
+#@bot.command()   
+#async def isitell(ctx):
+    #says = wiki.say(ctx.message.content.replace('$isitell ', ''))
+    #await ctx.send(says)
 
 @commands.cooldown(rate=1, per=20, type=commands.BucketType.user)
 @bot.command()    
