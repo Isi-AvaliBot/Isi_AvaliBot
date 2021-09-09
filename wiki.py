@@ -26,7 +26,7 @@ biology_array = [
     ('tribe','Culture#Packs'),
     ('pack','Culture#Packs'),
     ('factions','Factions'),
-    ('Illuminate','Factions#Avali_Illuminate'),
+    ('illuminate','Factions#Avali_Illuminate'),
     ('governance','Factions#Governance'),
     ('scientific','Factions#Scientific.2F_Space_Discovery'),
     ('space discovery','Factions#Scientific.2F_Space_Discovery'),
