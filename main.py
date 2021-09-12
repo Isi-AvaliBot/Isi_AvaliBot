@@ -38,7 +38,7 @@ async def dec(ctx):
 @bot.command()
 async def coconut(ctx):
  await ctx.send(embed= discord.Embed(title=
-    'кокос:coconut:кокоскокcoconut:coconut:кокосcoconutcockкокосcoconutcoconutкокос:coconut:'))
+    'кокос:coconut:кокоскокcoconut:coconut:кокосcoconutcockкокосcoconutcoconutкокос:coconut: 0.6 not found'))
 @commands.cooldown(rate=1, per=3, type=commands.BucketType.user)    
 @bot.command()
 async def awiki(ctx):
