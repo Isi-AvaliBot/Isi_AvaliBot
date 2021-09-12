@@ -39,7 +39,7 @@ biology_array = [
 def serch(raw_string):
     N = "NOT FOUND"
     output_string = raw_string
-    tt_string = output_string.replace('^awiki ', '')
+    tt_string = output_string.replace('$awiki ', '')
     output_string = output_string.replace('$awiki ', '')
     for biology_case in biology_array:
        tt_string = tt_string.replace(biology_case[0], biology_case[1])
