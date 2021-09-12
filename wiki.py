@@ -37,13 +37,20 @@ biology_array = [
 ]
 
 def serch(raw_string):
+    N = "NOT FOUND"
     output_string = raw_string
-    for j in biology_array:
-      for biology_case in biology_array:
-       output_string = output_string.replace('$awiki ', '')
-       output_string = output_string.replace(biology_case[0], biology_case[1])  
-    return 'https://avali.fandom.com/wiki/'+output_string
-#текст
+    tt_string = output_string.replace('^awiki ', '')
+    output_string = output_string.replace('^awiki ', '')
+    for biology_case in biology_array:
+       tt_string = tt_string.replace(biology_case[0], biology_case[1])
+       if tt_string != output_string:
+          N = 'https://avali.fandom.com/wiki/'+tt_string
+          return N
+      
+       print(tt_string,output_string)
+
+    return N 
+    
 def say(raw_string):
    output_string = raw_string
    return output_string
