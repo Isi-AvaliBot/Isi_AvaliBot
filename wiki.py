@@ -48,14 +48,6 @@ def serch(raw_string):
           return N
       #работай
        print(tt_string,output_string)
-
-    return N 
     
-def say(raw_string):
-   output_string = raw_string
-   return output_string
-   
-   
-   
-   
+    return N 
 #yyy
