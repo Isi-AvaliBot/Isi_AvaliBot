@@ -46,7 +46,7 @@ def serch(raw_string):
        if tt_string != output_string:
           N = 'https://avali.fandom.com/wiki/'+tt_string
           return N
-      
+      #работай
        print(tt_string,output_string)
 
     return N 
@@ -58,4 +58,4 @@ def say(raw_string):
    
    
    
-#yyyy
+#yyy
