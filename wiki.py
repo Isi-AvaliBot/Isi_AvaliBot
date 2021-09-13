@@ -48,4 +48,4 @@ def serch(raw_string):
           return N
       #работай   
     return N 
-#yyy
+#0/6/2
