@@ -2,4 +2,4 @@ discord
 requests
 Cybernator
 Paginator
-Random
+random
