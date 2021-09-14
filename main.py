@@ -38,7 +38,7 @@ async def dec(ctx):
 @bot.command()
 async def coconut(ctx):
  await ctx.send(embed= discord.Embed(title=
-    'кокос:coconut:кокоскокcoconut:coconut:кокосcoconutcockкокосcoconutcoconutкокос:coconut: 0.6.2'))
+    'кокос:coconut:кокоскокcoconut:coconut:кокосcoconutcockкокосcoconutcoconutкокос:coconut: 0.6.3'))
 @commands.cooldown(rate=1, per=3, type=commands.BucketType.user)    
 @bot.command()
 async def awiki(ctx):
@@ -47,17 +47,9 @@ async def awiki(ctx):
 @commands.cooldown(rate=1, per=10, type=commands.BucketType.user)
 @bot.command()
 async def avali(ctx):
-     oval = requests.get('https://api.vk.com/method/wall.search?owner_id=-186164216&query=%23avali&count=1&offset='+str(random.randint(0, 1520))+'&access_token=6666aad56666aad56666aad5c7661fa343666666666aad50747f80b4d281fa82d834e5a&v=5.123').json()
-     oval2 = oval.get('response').get('items')[0].get('attachments')[0].get('photo').get('sizes')
-     text = oval.get('response').get('items')[0].get('text')
-     embed=discord.Embed(title=text.replace('#furry', ''))
-     embed.set_image(url=oval2[len(oval2)-1].get('url'))
-     await ctx.send(embed=embed) 
-#@commands.cooldown(rate=1, per=4, type=commands.BucketType.user)    
-#@bot.command()   
-#async def isitell(ctx):
-    #says = wiki.say(ctx.message.content.replace('$isitell ', ''))
-    #await ctx.send(says)
+     imag = pain.ava()
+     await ctx.send(embed=imag) 
+
 
 @commands.cooldown(rate=1, per=20, type=commands.BucketType.user)
 @bot.command()    
