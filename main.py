@@ -19,7 +19,7 @@ bot.remove_command('help')
 @commands.cooldown(rate=1, per=7, type=commands.BucketType.user)
 @bot.command()
 async def help(ctx):
-    await ctx.send(embed= discord.Embed(description = 'use $ prefix before commands\n**enc <text>** - this function allows you to translate English into aval\n**dec <text>** - this function allows you to translate avalyn into english\n**awiki <text>** - this function allows you to find information by keyword or phrase\n**awikihelp** - list of requests for **awiki**\n**avali** - get a random picture of avali from the 1,500 library\n**team** - here you can find information about everyone who took part in the development of the bot'))
+    await ctx.send(embed= discord.Embed(description = 'use $ prefix before commands\n**enc <text>** - this function allows you to translate English into aval\n**dec <text>** - this function allows you to translate avalyn into english\n**awiki <text>** - this function allows you to find information by keyword or phrase\n**awikihelp** - list of requests for **awiki**\n**avali** - get a random picture of avali from the 1,500 library\n**team** - here you can find information about everyone who took part in the development of the bot\n**invite** - link to add a bot'))
 @commands.cooldown(rate=1, per=7, type=commands.BucketType.user)
 @bot.command()
 async def team(ctx):
@@ -34,11 +34,17 @@ async def enc(ctx):
 async def dec(ctx):
     dec = enc_dec.decoder(ctx.message.content.replace('$dec ', ''))
     await ctx.send(dec)
+@commands.cooldown(rate=1, per=30, type=commands.BucketType.user)    
+@bot.command()
+async def invite(ctx):
+  await ctx.send(embed= discord.Embed(title='https://discord.com/api/oauth2/authorize?client_id=876515016143147110&permissions=534723820608&scope=bot'))
+
+
 @commands.cooldown(rate=1, per=120, type=commands.BucketType.user)    
 @bot.command()
 async def coconut(ctx):
  await ctx.send(embed= discord.Embed(title=
-    'кокос:coconut:кокоскокcoconut:coconut:кокосcoconutcockкокосcoconutcoconutкокос:coconut: 0.6.4\n -fixed minor bugs'))
+    'кокос:coconut:кокоскокcoconut:coconut:кокосcoconutcockкокосcoconutcoconutкокос:coconut: 0.7.0\n - add $invite'))
 @commands.cooldown(rate=1, per=3, type=commands.BucketType.user)    
 @bot.command()
 async def awiki(ctx):
