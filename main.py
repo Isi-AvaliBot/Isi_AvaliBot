@@ -34,7 +34,7 @@ async def enc(ctx):
 async def dec(ctx):
     dec = enc_dec.decoder(ctx.message.content.replace('$dec ', ''))
     await ctx.send(dec)
-@commands.cooldown(rate=1, per=1, type=commands.BucketType.user)    
+@commands.cooldown(rate=1, per=120, type=commands.BucketType.user)    
 @bot.command()
 async def coconut(ctx):
  await ctx.send(embed= discord.Embed(title=
