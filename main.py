@@ -19,7 +19,7 @@ bot.remove_command('help')
 @commands.cooldown(rate=1, per=7, type=commands.BucketType.user)
 @bot.command()
 async def help(ctx):
-    await ctx.send(embed= discord.Embed(description = '**enc <text>** - this function allows you to translate English into aval\n**dec <text>** - this function allows you to translate avalyn into english\n**awiki <text>** - this function allows you to find information by keyword or phrase\n**awikihelp** - list of requests for **awiki**\n**avali** - get a random picture of avali from the 1,500 library\n**team** - here you can find information about everyone who took part in the development of the bot'))
+    await ctx.send(embed= discord.Embed(description = 'use $ prefix before commands\n**enc <text>** - this function allows you to translate English into aval\n**dec <text>** - this function allows you to translate avalyn into english\n**awiki <text>** - this function allows you to find information by keyword or phrase\n**awikihelp** - list of requests for **awiki**\n**avali** - get a random picture of avali from the 1,500 library\n**team** - here you can find information about everyone who took part in the development of the bot'))
 @commands.cooldown(rate=1, per=7, type=commands.BucketType.user)
 @bot.command()
 async def team(ctx):
@@ -38,7 +38,7 @@ async def dec(ctx):
 @bot.command()
 async def coconut(ctx):
  await ctx.send(embed= discord.Embed(title=
-    'кокос:coconut:кокоскокcoconut:coconut:кокосcoconutcockкокосcoconutcoconutкокос:coconut: 0.6.3'))
+    'кокос:coconut:кокоскокcoconut:coconut:кокосcoconutcockкокосcoconutcoconutкокос:coconut: 0.6.4\n -fixed minor bugs'))
 @commands.cooldown(rate=1, per=3, type=commands.BucketType.user)    
 @bot.command()
 async def awiki(ctx):

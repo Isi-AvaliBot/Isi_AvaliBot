@@ -9,7 +9,7 @@ biology_array = [
     ('flight','Biology#Physiology'),
     ('ammonia','Biology#Ammonia_Biology'),
     ('wings','Biology#Feathers'),
-    ('how many live','~200 years (not officially)'),
+    ('how many live','\n ~200 years (not officially)'),
     ('reproduction','Biology#Reproduction.2C_Sexuality_.26_Growth'),
     ('sex','Biology#Reproduction.2C_Sexuality_.26_Growth'),
     ('augmentation','Biology#Augmentation'),
