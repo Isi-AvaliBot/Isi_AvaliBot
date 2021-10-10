@@ -76,18 +76,7 @@ async def awikihelp(ctx):
     message = await ctx.send(embed=embed1)
     pag = page(bot, message, only=ctx.author, use_more=False, embeds=em)
     await pag.start()
-@commands.cooldown(rate=1, per=4, type=commands.BucketType.user)
-@bot.command()    
-async def servers(ctx):
-  x=0
-  for server in bot.guilds:
-      x+=1
-      print(server.name)
-  activeServers = bot.guilds
-  summ = 0
-  for s in activeServers:
-      summ += len(s.members)
-  await ctx.send(summ)
+
 
 
 
