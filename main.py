@@ -19,7 +19,16 @@ bot.remove_command('help')
 @commands.cooldown(rate=1, per=7, type=commands.BucketType.user)
 @bot.command()
 async def help(ctx):
-    await ctx.send(embed= discord.Embed(description = 'use $ prefix before commands\n**enc <text>** - this function allows you to translate English into aval\n**dec <text>** - this function allows you to translate avalyn into english\n**awiki <text>** - this function allows you to find information by keyword or phrase\n**awikihelp** - list of requests for **awiki**\n**avali** - get a random picture of avali from the 1,500 library\n**team** - here you can find information about everyone who took part in the development of the bot\n**invite** - link to add a bot'))
+    x=0
+    for server in bot.guilds:
+      x+=1
+      print(server.name)
+    activeServers = bot.guilds
+    summ = 0
+    for s in activeServers:
+      summ += len(s.members)
+    summ = str(summ)
+    await ctx.send(embed= discord.Embed(description = 'use $ prefix before commands\n**enc <text>** - this function allows you to translate English into aval\n**dec <text>** - this function allows you to translate avalyn into english\n**awiki <text>** - this function allows you to find information by keyword or phrase\n**awikihelp** - list of requests for **awiki**\n**avali** - get a random picture of avali from the 1,500 library\n**team** - here you can find information about everyone who took part in the development of the bot\n**invite** - link to add a bot\n\n\n now the bot is on '+ summ +' servers'))
 @commands.cooldown(rate=1, per=7, type=commands.BucketType.user)
 @bot.command()
 async def team(ctx):
@@ -67,7 +76,18 @@ async def awikihelp(ctx):
     message = await ctx.send(embed=embed1)
     pag = page(bot, message, only=ctx.author, use_more=False, embeds=em)
     await pag.start()
-
+@commands.cooldown(rate=1, per=4, type=commands.BucketType.user)
+@bot.command()    
+async def servers(ctx):
+  x=0
+  for server in bot.guilds:
+      x+=1
+      print(server.name)
+  activeServers = bot.guilds
+  summ = 0
+  for s in activeServers:
+      summ += len(s.members)
+  await ctx.send(summ)
 
 
 
