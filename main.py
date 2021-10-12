@@ -18,6 +18,9 @@ import threading
 cash = cash()
 cash.sync()
 
+i_thread = threading.Thread(target=cash._check)
+i_thread.start()
+
 bot = commands.Bot(command_prefix = settings['prefix'])
 bot.remove_command('help')
 
