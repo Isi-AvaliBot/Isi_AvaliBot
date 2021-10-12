@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-import time
+#import time
 from Cybernator import Paginator as page
 import random
 
@@ -11,6 +11,12 @@ import requests
 import enc_dec
 import wiki
 import pain
+
+from casher import cash
+from time import sleep
+import threading
+cash = cash()
+cash.sync()
 
 bot = commands.Bot(command_prefix = settings['prefix'])
 bot.remove_command('help')
