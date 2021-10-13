@@ -37,7 +37,7 @@ async def help(ctx):
     for s in activeServers:
       summ += len(s.members)
     summ = str(summ)
-    await ctx.send(embed= discord.Embed(description = 'use $ prefix before commands\n**enc <text>** - this function allows you to translate English into aval\n**dec <text>** - this function allows you to translate avalyn into english\n**awiki <text>** - this function allows you to find information by keyword or phrase\n**awikihelp** - list of requests for **awiki**\n**avali** - get a random picture of avali from the 1,500 library\n**team** - here you can find information about everyone who took part in the development of the bot\n**invite** - link to add a bot\n\n\n now the bot is on '+ summ +' servers'))
+    await ctx.send(embed= discord.Embed(description = 'use $ prefix before commands\n**enc <text>** - this function allows you to translate English into aval\n**dec <text>** - this function allows you to translate avalyn into english\n**awiki <text>** - this function allows you to find information by keyword or phrase\n**awikihelp** - list of requests for **awiki**\n**avali** - get a random picture of avali from the 1,500 library\n**team** - here you can find information about everyone who took part in the development of the bot\n**invite** - link to add a bot\n\n\n now the bot is on '+ summ +' servers\nDiscord server\nhttps://discord.gg/43NJF983jZ'))
 @commands.cooldown(rate=1, per=7, type=commands.BucketType.user)
 @bot.command()
 async def team(ctx):
@@ -62,7 +62,7 @@ async def invite(ctx):
 @bot.command()
 async def coconut(ctx):
  await ctx.send(embed= discord.Embed(title=
-    'кокос:coconut:кокоскокcoconut:coconut:кокосcoconutcockкокосcoconutcoconutкокос:coconut: 0.7.1\n - updated help command'))
+    'кокос:coconut:кокоскокcoconut:coconut:кокосcoconutcockкокосcoconutcoconutкокос:coconut: 0.7.2\n - add cash sistem'))
 @commands.cooldown(rate=1, per=3, type=commands.BucketType.user)    
 @bot.command()
 async def awiki(ctx):
