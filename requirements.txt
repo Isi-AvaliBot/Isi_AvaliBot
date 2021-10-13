@@ -2,7 +2,6 @@ discord
 requests
 Cybernator
 Paginator
-time
 json
 threading
 casher
