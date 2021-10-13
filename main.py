@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-#import time
 from Cybernator import Paginator as page
 import random
 
@@ -12,7 +11,6 @@ import enc_dec
 import wiki
 
 from casher import cash
-from time import sleep
 import threading
 cash = cash()
 cash.sync()
