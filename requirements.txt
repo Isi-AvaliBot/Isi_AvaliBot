@@ -2,5 +2,3 @@ discord
 requests
 Cybernator
 Paginator
-threading
-casher
