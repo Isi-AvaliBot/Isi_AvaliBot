@@ -10,7 +10,6 @@ import requests
 
 import enc_dec
 import wiki
-import pain
 
 from casher import cash
 from time import sleep
@@ -71,8 +70,11 @@ async def awiki(ctx):
 @commands.cooldown(rate=1, per=10, type=commands.BucketType.user)
 @bot.command()
 async def avali(ctx):
-     imag = pain.ava()
-     await ctx.send(embed=imag) 
+    url = cash.request()
+    embed=discord.Embed(title='Art by'+url.author)
+    embed.set_image(url=url.uri)
+    #imag = pain.ava()
+    await ctx.send(embed=embed)
 
 
 @commands.cooldown(rate=1, per=20, type=commands.BucketType.user)
