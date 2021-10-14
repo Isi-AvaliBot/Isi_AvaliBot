@@ -55,25 +55,6 @@ async def dec(ctx):
 async def invite(ctx):
   await ctx.send(embed= discord.Embed(title='https://discord.com/api/oauth2/authorize?client_id=876515016143147110&permissions=534723820608&scope=bot'))
 
-
-@bot.command()
-async def awiki(ctx):
-  msg = ctx.message.content.split(' ')
-  loc=''
-  msg = msg[1:]
-  omsg=msg
-  if 'in' in msg:
-    loc = msg[1]
-    omsg = msg[2:]
-  data = twiki.scrape(loc=loc)
-  engine = twiki.engine(data)
-  msg = engine.load(' '.join(omsg))
-  embed=discord.Embed()
-  embed.set_thumbnail(url=twiki.image(loc=loc))
-  embed.add_field(name=str(' '.join(omsg)).upper(), value=msg, inline=False)
-  await ctx.send(embed=embed)
-@commands.cooldown(rate=1, per=120, type=commands.BucketType.user)    
-@bot.command()
 async def coconut(ctx):
  await ctx.send(embed= discord.Embed(title=
     'кокос:coconut:кокоскокcoconut:coconut:кокосcoconutcockкокосcoconutcoconutкокос:coconut: 0.7.3\n - new wiki'))
