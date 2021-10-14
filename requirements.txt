@@ -2,3 +2,4 @@ discord
 requests
 Cybernator
 Paginator
+bs4
