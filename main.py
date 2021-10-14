@@ -9,7 +9,6 @@ import requests
 
 import twiki
 import enc_dec
-import wiki
 from scrape import scraper
 from casher import cash
 import threading
