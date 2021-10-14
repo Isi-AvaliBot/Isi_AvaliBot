@@ -7,10 +7,10 @@ from config import settings
 import json
 import requests
 
-
+import twiki
 import enc_dec
-import wiki
-from scrape import scraper
+
+
 from casher import cash
 import threading
 cash = cash()
@@ -55,28 +55,24 @@ async def dec(ctx):
 async def invite(ctx):
   await ctx.send(embed= discord.Embed(title='https://discord.com/api/oauth2/authorize?client_id=876515016143147110&permissions=534723820608&scope=bot'))
 
-@commands.cooldown(rate=1, per=5, type=commands.BucketType.user)  
-@bot.command()
-async def stbAwiki(ctx):
-  s = scraper()
-  msg = ctx.message.content.split(' ')[1:]
-  print(msg)
-  if len(msg) == 0:
-    s = s.map(loc='https://avali.fandom.com/wiki/Items')
-    await ctx.send(embed = s)
-  if len(msg) == 1:
-    context = ' '.join(msg)
-    e = s.map(loc='https://avali.fandom.com/wiki/Items',context=context)
-    try:
-      await ctx.send(embed = e)
-    except:
-      await ctx.send("Failed, did you specify in which category I should look? <:blep00:897749326745456651>")
-  else:
-    context = ' '.join(msg)
-    s.load(loc='https://avali.fandom.com/wiki/Items',context=context)
-    craft = s.get_craft(s.out)
-    await ctx.send(embed = craft)
 
+@commands.cooldown(rate=1, per=10, type=commands.BucketType.user) 
+@bot.command()
+async def awiki(ctx):
+  msg = ctx.message.content.split(' ')
+  loc=''
+  msg = msg[1:]
+  omsg=msg
+  if 'in' in msg:
+    loc = msg[1]
+    omsg = msg[2:]
+  data = twiki.scrape(loc=loc)
+  engine = twiki.engine(data)
+  msg = engine.load(' '.join(omsg))
+  embed=discord.Embed()
+  embed.set_thumbnail(url=twiki.image(loc=loc))
+  embed.add_field(name=str(' '.join(omsg)).upper(), value=msg, inline=False)
+  await ctx.send(embed=embed)
 @commands.cooldown(rate=1, per=120, type=commands.BucketType.user)    
 @bot.command()
 async def coconut(ctx):
