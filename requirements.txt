@@ -3,3 +3,5 @@ requests
 Cybernator
 Paginator
 bs4
+flask
+sqlite3
