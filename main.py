@@ -26,6 +26,7 @@ bot.remove_command('help')
 @commands.cooldown(rate=1, per=7, type=commands.BucketType.user)
 @bot.command()
 async def help(ctx):
+    db.message(ctx.guild,ctx.author.id)
     x=0
     for server in bot.guilds:
       x+=1
@@ -39,25 +40,30 @@ async def help(ctx):
 @commands.cooldown(rate=1, per=7, type=commands.BucketType.user)
 @bot.command()
 async def team(ctx):
+    db.message(ctx.guild,ctx.author.id)
     await ctx.send(embed= discord.Embed(title="coconut team", description = "<@385504411763605505> - discord bot | report an issue\n<@528586514213371915> - $encoder-decoder\n<@290350813828874241> - $avali\n<@351404235578933249> - new $awiki, $stbAwiki, cash system for $avali"))
 @commands.cooldown(rate=1, per=3, type=commands.BucketType.user)    
 @bot.command()   
 async def enc(ctx):
+    db.message(ctx.guild,ctx.author.id)
     enc = enc_dec.encoder(ctx.message.content.replace('$enc ', ''))
     await ctx.send(enc)
 @commands.cooldown(rate=1, per=3, type=commands.BucketType.user)    
 @bot.command()    
 async def dec(ctx):
+    db.message(ctx.guild,ctx.author.id)
     dec = enc_dec.decoder(ctx.message.content.replace('$dec ', ''))
     await ctx.send(dec)
 @commands.cooldown(rate=1, per=30, type=commands.BucketType.user)    
 @bot.command()
 async def invite(ctx):
+  db.message(ctx.guild,ctx.author.id)
   await ctx.send(embed= discord.Embed(title='https://discord.com/api/oauth2/authorize?client_id=876515016143147110&permissions=534723820608&scope=bot'))
 
 @commands.cooldown(rate=1, per=5, type=commands.BucketType.user)  
 @bot.command()
 async def stbAwiki(ctx):
+  db.message(ctx.guild,ctx.author.id)
   s = scraper()
   msg = ctx.message.content.split(' ')[1:]
   print(msg)
@@ -80,6 +86,7 @@ async def stbAwiki(ctx):
 @commands.cooldown(rate=1, per=10, type=commands.BucketType.user) 
 @bot.command()
 async def awiki(ctx):
+  db.message(ctx.guild,ctx.author.id)
   msg = ctx.message.content.split(' ')
   loc=''
   msg = msg[1:]
@@ -97,17 +104,20 @@ async def awiki(ctx):
 @commands.cooldown(rate=1, per=120, type=commands.BucketType.user)    
 @bot.command()
 async def coconut(ctx):
- await ctx.send(embed= discord.Embed(title=
+  db.message(ctx.guild,ctx.author.id)
+  await ctx.send(embed= discord.Embed(title=
     'кокос:coconut:кокоскокcoconut:coconut:кокосcoconutcockкокосcoconutcoconutкокос:coconut: 0.7.3\n - new wiki'))
 @commands.cooldown(rate=1, per=3, type=commands.BucketType.user)    
 @bot.command()
-
 async def avali(ctx):
+    db.message(ctx.guild,ctx.author.id)
     url = cash.request()
     embed=discord.Embed(title='Art by'+url.author)
     embed.set_image(url=url.uri)
     #imag = pain.ava()
     await ctx.send(embed=embed)
+
+
 
 
 

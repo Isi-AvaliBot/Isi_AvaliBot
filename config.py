@@ -1,6 +1,23 @@
 settings = {
-    'token': 'U gay',
-    'bot': 'Isi_AvaliBot',
+    'bot': 'Isi_TestBot',
     'id': 876515016143147110,
-    'prefix': '$'
+    'prefix': '^'
 }
+
+import os
+
+
+class BaseConfig:
+    SECRET_KEY = os.getenv('SECRET_KEY', 'FKENFQ13O4IINF$34N$F!43N67$NFN7')
+
+
+class DevelopmentConfig(BaseConfig):
+    DEBUG = True
+
+
+class TestingConfig(BaseConfig):
+    DEBUG = True
+
+
+class ProductionConfig(BaseConfig):
+    pass

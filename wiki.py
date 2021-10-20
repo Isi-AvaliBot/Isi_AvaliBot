@@ -49,3 +49,15 @@ def serch(raw_string):
       #работай   
     return N 
 #0/6/2
+
+
+@commands.cooldown(rate=1, per=20, type=commands.BucketType.user)
+@bot.command()    
+async def awikihelp(ctx):
+    embed1 = discord.Embed(title='page 1', description='A\nammonia\narmor\naugmentation\nC\nculture\nD\ndifferences\ndomestic technology\ndrone\nF\nfactions\nflight\nG\ngovernance\ngrowth')
+    embed2 = discord.Embed(title='page 2', description='H\nheight\nhousehold\nhow many live\nI\nIlluminate\nindependent worlds\nK\nknown worlds\nL\nlength\nM\nmedicine\nN\nnexus')
+    embed3 = discord.Embed(title='page 3', description='P\npack\nR\nreproduction\nS\nscientific\nsize\nspace\nspace discovery\nsurvival\nT\ntechnology\ntribe\nW\nweaponry\nwings')
+    em = [embed1, embed2, embed3]
+    message = await ctx.send(embed=embed1)
+    pag = page(bot, message, only=ctx.author, use_more=False, embeds=em)
+    await pag.start()
