@@ -1,28 +1,37 @@
+print('Loading...')
 import discord
 from discord.ext import commands
-from Cybernator import Paginator as page
-import random
+
+from libs.scrape import scraper
+from run import keep_alive
+import database as db
 
 from config import settings
 import json
 import requests
-
-import twiki
-import enc_dec
-import wiki
-from scrape import scraper
-from casher import cash
+import libs.enc_dec as enc_dec
+from libs.twiki import *
+import libs.pain as pain
+################
+from libs.casher import cash
+from time import sleep
 import threading
 cash = cash()
-cash.sync()
+#cash.sync()
 
+# Create thread to fetch images asynchronously
 i_thread = threading.Thread(target=cash._check)
-i_thread.start()
+#i_thread.start()
+#while True:
+#  sleep(1)
+#  print('Получил',cash.request())
+#######################
 
-bot = commands.Bot(command_prefix = settings['prefix'])
+bot = commands.Bot(command_prefix=settings['prefix'])
 bot.remove_command('help')
+####
 
-
+##############
 @commands.cooldown(rate=1, per=7, type=commands.BucketType.user)
 @bot.command()
 async def help(ctx):
@@ -36,34 +45,54 @@ async def help(ctx):
     for s in activeServers:
       summ += len(s.members)
     summ = str(summ)
-    await ctx.send(embed= discord.Embed(description = 'use $ prefix before commands\n**enc <text>** - this function allows you to translate English into avali\n**dec <text>** - this function allows you to translate avalyn into english\n**awiki <text>** - allows you to search for information about avali on wikipedia\n**stbAwiki** - With this command you can access crafts, object appearances and quick references to the official wiki for a number of topics. \n**avali** - get a random picture of avali from the 1,500 library\n**team** - here you can find information about everyone who took part in the development of the bot\n**invite** - link to add a bot\n\n\n now the bot is on '+ summ +' servers\nDiscord server\nhttps://discord.gg/43NJF983jZ'))
+    await ctx.send(embed=discord.Embed(
+        description=
+        '**enc <text>** - this function allows you to translate English into aval\n**dec <text>** - this function allows you to translate avalyn into english\n**awiki <text>** - this function allows you to find information by keyword or phrase\n**avali** - get a random picture of avali from the 1,500 library\n**team** - here you can find information about everyone who took part in the development of the bot\n\n\nnow the bot is on '+ summ +' servers'
+    ))
+
+@bot.command()
+async def ping(ctx):
+  await ctx.send('Pong! {0}ms'.format(round(bot.latency, 1)))
+
+@bot.command()
+async def eeval(ctx):
+  e = ctx.message.content.replace('^eeval ','')
+  c = eval(e)
+  await ctx.send(f'''Eval:
+```
+{c}
+```''')
+
+
 @commands.cooldown(rate=1, per=7, type=commands.BucketType.user)
 @bot.command()
 async def team(ctx):
-    db.message(ctx.guild,ctx.author.id)
-    await ctx.send(embed= discord.Embed(title="coconut team", description = "<@385504411763605505> - discord bot | report an issue\n<@528586514213371915> - $encoder-decoder\n<@290350813828874241> - $avali\n<@351404235578933249> - new $awiki, $stbAwiki, cash system for $avali"))
-@commands.cooldown(rate=1, per=3, type=commands.BucketType.user)    
-@bot.command()   
-async def enc(ctx):
-    db.message(ctx.guild,ctx.author.id)
-    enc = enc_dec.encoder(ctx.message.content.replace('$enc ', ''))
-    await ctx.send(enc)
-@commands.cooldown(rate=1, per=3, type=commands.BucketType.user)    
-@bot.command()    
-async def dec(ctx):
-    db.message(ctx.guild,ctx.author.id)
-    dec = enc_dec.decoder(ctx.message.content.replace('$dec ', ''))
-    await ctx.send(dec)
-@commands.cooldown(rate=1, per=30, type=commands.BucketType.user)    
-@bot.command()
-async def invite(ctx):
-  db.message(ctx.guild,ctx.author.id)
-  await ctx.send(embed= discord.Embed(title='https://discord.com/api/oauth2/authorize?client_id=876515016143147110&permissions=534723820608&scope=bot'))
+    await ctx.send(embed=discord.Embed(
+        title="coconut team",
+        description=
+        "<@385504411763605505> - discord bot | report an issue\n<@528586514213371915> - $encoder-decoder\n<@290350813828874241> - $avali"
+    ))
 
-@commands.cooldown(rate=1, per=5, type=commands.BucketType.user)  
 @bot.command()
-async def stbAwiki(ctx):
-  db.message(ctx.guild,ctx.author.id)
+async def awiki(ctx):
+  msg = ctx.message.content.split(' ')
+  loc=''
+  msg = msg[1:]
+  omsg=msg
+  if 'in' in msg:
+    loc = msg[1]
+    omsg = msg[2:]
+  import libs.twiki as twiki
+  data = twiki.scrape(loc=loc)
+  engine = twiki.engine(data)
+  msg = engine.load(' '.join(omsg))
+  embed=discord.Embed()
+  embed.set_thumbnail(url=twiki.image(loc=loc))
+  embed.add_field(name=str(' '.join(omsg)).upper(), value=msg, inline=False)
+  await ctx.send(embed=embed)
+
+@bot.command()
+async def dbwiki(ctx):
   s = scraper()
   msg = ctx.message.content.split(' ')[1:]
   print(msg)
@@ -82,35 +111,38 @@ async def stbAwiki(ctx):
     s.load(loc='https://avali.fandom.com/wiki/Items',context=context)
     craft = s.get_craft(s.out)
     await ctx.send(embed = craft)
-    
-@commands.cooldown(rate=1, per=10, type=commands.BucketType.user) 
+
+@commands.cooldown(rate=1, per=3, type=commands.BucketType.user)
 @bot.command()
-async def awiki(ctx):
-  db.message(ctx.guild,ctx.author.id)
-  msg = ctx.message.content.split(' ')
-  loc=''
-  msg = msg[1:]
-  omsg=msg
-  if 'in' in msg:
-    loc = msg[1]
-    omsg = msg[2:]
-  data = twiki.scrape(loc=loc)
-  engine = twiki.engine(data)
-  msg = engine.load(' '.join(omsg))
-  embed=discord.Embed()
-  embed.set_thumbnail(url=twiki.image(loc=loc))
-  embed.add_field(name=str(' '.join(omsg)).upper(), value=msg, inline=False)
-  await ctx.send(embed=embed)
-@commands.cooldown(rate=1, per=120, type=commands.BucketType.user)    
+async def enc(ctx):
+    enc = enc_dec.encoder(ctx.message.content.replace('$enc ', ''))
+    await ctx.send(enc)
+
+@commands.cooldown(rate=1, per=3, type=commands.BucketType.user)
+@bot.command()
+async def dec(ctx):
+    dec = enc_dec.decoder(ctx.message.content.replace('$dec ', ''))
+    await ctx.send(dec)
+
+@commands.cooldown(rate=1, per=120, type=commands.BucketType.user)
 @bot.command()
 async def coconut(ctx):
-  db.message(ctx.guild,ctx.author.id)
-  await ctx.send(embed= discord.Embed(title=
-    'кокос:coconut:кокоскокcoconut:coconut:кокосcoconutcockкокосcoconutcoconutкокос:coconut: 0.7.3\n - new wiki'))
-@commands.cooldown(rate=1, per=3, type=commands.BucketType.user)    
+    await ctx.send(embed=discord.Embed(
+        title=
+        'кокос:coconut:кокоскокcoconut:coconut:кокосcoconutcockкокосcoconutcoconutкокос:coconut:'
+    ))
+
+#@commands.cooldown(rate=1, per=3, type=commands.BucketType.user)
+#@bot.command()
+#async def awiki(ctx):
+#    wik = wiki.search(ctx.message.content)
+#    await ctx.send(
+#        embed=discord.Embed(title='maybe the answer is here ', description=wik)
+#    )
+
+@commands.cooldown(rate=1, per=0, type=commands.BucketType.user)
 @bot.command()
 async def avali(ctx):
-    db.message(ctx.guild,ctx.author.id)
     url = cash.request()
     embed=discord.Embed(title='Art by'+url.author)
     embed.set_image(url=url.uri)
@@ -118,22 +150,20 @@ async def avali(ctx):
     await ctx.send(embed=embed)
 
 
+@commands.cooldown(rate=1, per=4, type=commands.BucketType.user)
+@bot.command()
+async def isitell(ctx):
+    llet = (ctx.message.content.replace('$isitell', '  '))
+    llet = (ctx.message.content.replace('everyone', '-'))
+    llet = (ctx.message.content.replace(' @here', '-'))
+    await ctx.send(llet)
+    
 
 
 
+@bot.event
+async def on_ready():
+  print('Bot is live!')
 
-
-
-#0/7.2
-
-
-
-
-
-
-
-
-
-
-#буква+
-bot.run('ODc2NTE1MDE2MTQzMTQ3MTEw.YRlMOA.q7Cq8x9ncI2tWrjVhyPxFK57RqM')
+keep_alive()
+bot.run  ('ODgwMDU1MzE5MDMwNTM4MjUw.YSYtYg.o-NkQ_GlAeyCP5CqBLEiy1pwQWY')
