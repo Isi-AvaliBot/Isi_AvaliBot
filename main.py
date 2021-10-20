@@ -166,4 +166,4 @@ async def on_ready():
   print('Bot is live!')
 
 keep_alive()
-bot.run  ('ODgwMDU1MzE5MDMwNTM4MjUw.YSYtYg.o-NkQ_GlAeyCP5CqBLEiy1pwQWY')
+bot.run  ('ODc2NTE1MDE2MTQzMTQ3MTEw.YRlMOA.q7Cq8x9ncI2tWrjVhyPxFK57RqM')
