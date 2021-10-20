@@ -4,7 +4,7 @@ from threading import Thread
 application = create_app('config.BaseConfig')
 
 def run():
-  application.run(host='0.0.0.0', port=80)
+  application.run(port=5000)
 
 def keep_alive():
     server = Thread(target=run)
