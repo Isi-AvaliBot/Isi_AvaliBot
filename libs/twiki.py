@@ -77,13 +77,14 @@ def remove_empty_from_dict(d):
     else:
         return d
 
-data = scrape()
-# Input
-inp = 'Starbound'
-# Create an engine instance
-e = engine(data)
-# Load data into engine
-print(e.data)
-match = e.load(inp)
-print(match)
-
+#data = scrape()
+## Input
+#inp = 'Starbound'
+## Create an engine instance
+#e = engine(data)
+## Load data into engine
+#print(e.data)
+#match = e.load(inp)
+#print(match)
+#
+#

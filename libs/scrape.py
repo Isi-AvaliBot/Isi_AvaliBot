@@ -96,10 +96,10 @@ class scraper:
     if context is not None:
       embed=discord.Embed(title=context.upper())
       for i in y:
-        embed.add_field(name=i, value = f"`stbAwiki {context} {i}` for more", inline=False)
+        embed.add_field(name=i, value = f"`scrape {context} {i}` for more", inline=False)
       return embed
     else:
       embed=discord.Embed(title="CATEGORIES")
       for i in y:
-        embed.add_field(name=i, value = f"`stbAwiki {i}` for more", inline=False)
+        embed.add_field(name=i, value = f"`scrape {i}` for more", inline=False)
       return embed
