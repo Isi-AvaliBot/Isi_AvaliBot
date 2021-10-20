@@ -174,6 +174,8 @@ class message:
     self.server_id = server_id
     if month:
       self.month = month
+    else:
+      self.month = False
     self.user = user
     self.test = test
     self.conn = conn
