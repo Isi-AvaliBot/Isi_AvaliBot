@@ -27,7 +27,7 @@ i_thread = threading.Thread(target=cash._check)
 #  print('Получил',cash.request())
 #######################
 
-bot = commands.Bot(command_prefix=settings['prefix'])
+bot = commands.Bot(command_prefix='$')
 bot.remove_command('help')
 ####
 
