@@ -4,4 +4,3 @@ Cybernator
 Paginator
 bs4
 flask==2.0.2
-sqlite3
