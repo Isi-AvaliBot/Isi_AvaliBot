@@ -21,7 +21,7 @@ cash = cash()
 
 # Create thread to fetch images asynchronously
 i_thread = threading.Thread(target=cash._check)
-#i_thread.start()
+i_thread.start()
 #while True:
 #  sleep(1)
 #  print('Получил',cash.request())
