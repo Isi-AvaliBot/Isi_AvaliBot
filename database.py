@@ -276,5 +276,5 @@ def get_change(current, previous):
 
 def get_from_config(ctype,server_id):
   if ctype == 'month':
-    monthly = c.datajson['servers'][server_id]['monthly']
+    monthly = c.datajson['servers'][str(server_id)]['monthly']
     return monthly

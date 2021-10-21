@@ -11,6 +11,7 @@ import json
 import requests
 import libs.enc_dec as enc_dec
 from libs.twiki import *
+from libs.hook import hook
 import libs.pain as pain
 ################
 from libs.casher import cash
@@ -27,7 +28,7 @@ i_thread.start()
 #  print('Получил',cash.request())
 #######################
 
-bot = commands.Bot(command_prefix='$')
+bot = commands.Bot(command_prefix=settings['prefix'])
 bot.remove_command('help')
 ####
 
@@ -47,7 +48,7 @@ async def help(ctx):
     summ = str(summ)
     await ctx.send(embed=discord.Embed(
         description=
-        'use $ prefix before commands\n**enc <text>** - this function allows you to translate English into avali\n**dec <text>** - this function allows you to translate avalyn into english\n**awiki <text>** - allows you to search for information about avali on wikipedia\n**stbAwiki** - With this command you can access crafts, object appearances and quick references to the official wiki for a number of topics. \n**avali** - get a random picture of avali from the 1,500 library\n**team** - here you can find information about everyone who took part in the development of the bot\n**invite** - link to add a bot\n\n\n now the bot is on '+ summ +' servers\nDiscord server\nhttps://discord.gg/43NJF983jZ'
+        '**enc <text>** - this function allows you to translate English into aval\n**dec <text>** - this function allows you to translate avalyn into english\n**awiki <text>** - this function allows you to find information by keyword or phrase\n**avali** - get a random picture of avali from the 1,500 library\n**team** - here you can find information about everyone who took part in the development of the bot\n\n\nnow the bot is on '+ summ +' servers'
     ))
 
 @bot.command()
@@ -117,6 +118,7 @@ async def dbwiki(ctx):
 async def enc(ctx):
     enc = enc_dec.encoder(ctx.message.content.replace('$enc ', ''))
     await ctx.send(enc)
+    
 
 @commands.cooldown(rate=1, per=3, type=commands.BucketType.user)
 @bot.command()
@@ -129,7 +131,7 @@ async def dec(ctx):
 async def coconut(ctx):
     await ctx.send(embed=discord.Embed(
         title=
-        'кокос:coconut:кокоскокcoconut:coconut:кокосcoconutcockкокосcoconutcoconutкокос:coconut:\n \n0.8 - website'
+        'кокос:coconut:кокоскокcoconut:coconut:кокосcoconutcockкокосcoconutcoconutкокос:coconut:'
     ))
 
 #@commands.cooldown(rate=1, per=3, type=commands.BucketType.user)
@@ -157,20 +159,25 @@ async def isitell(ctx):
     llet = (ctx.message.content.replace('everyone', '-'))
     llet = (ctx.message.content.replace(' @here', '-'))
     await ctx.send(llet)
-    
+import os,sys
+# Error reporter
+@bot.command()
+async def restart(ctx):
+  restart_bot()
 
+def restart_bot(): 
+  os.execv(sys.executable, ['poetry run python3'] + sys.argv)
 
+@bot.event
+async def on_command_error(ctx, error):
+  h = hook()
+  h.send(description=f"Command failed!\n{error}") 
 
 @bot.event
 async def on_ready():
   print('Bot is live!')
-
-
-
-
-# 0.8.0 ччч
-
-
+  h = hook()
+  h.send(description="Bot started! ✅") 
 
 keep_alive()
-bot.run  ('ODc2NTE1MDE2MTQzMTQ3MTEw.YRlMOA.q7Cq8x9ncI2tWrjVhyPxFK57RqM')
+bot.run  ('ODgwMDU1MzE5MDMwNTM4MjUw.YSYtYg.o-NkQ_GlAeyCP5CqBLEiy1pwQWY')
