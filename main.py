@@ -36,7 +36,7 @@ bot.remove_command('help')
 @commands.cooldown(rate=1, per=7, type=commands.BucketType.user)
 @bot.command()
 async def help(ctx):
-    db.message(ctx.guild,ctx.author.id)
+    #db.message(ctx.guild,ctx.author.id)
     x=0
     for server in bot.guilds:
       x+=1
@@ -179,5 +179,5 @@ async def on_ready():
   h = hook()
   h.send(description="Bot started! ✅") 
 
-keep_alive()
+#keep_alive()
 bot.run  ('ODc2NTE1MDE2MTQzMTQ3MTEw.YRlMOA.q7Cq8x9ncI2tWrjVhyPxFK57RqM')
