@@ -77,7 +77,7 @@ def encoder(raw_string):
     #    # Добавление "пробелов" после каждого "символа"
     #    output_string += ' '
     
-    return '```'+output_string+f'``` time taken: {timetaken }'
+    return '```'+output_string+f'```'
 
 def decoder(raw_string):
     # строка, которая будет выводиться в конце декодирования
