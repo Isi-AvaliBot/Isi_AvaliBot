@@ -71,7 +71,7 @@ async def team(ctx):
     await ctx.send(embed=discord.Embed(
         title="coconut team",
         description=
-        "<@385504411763605505> - discord bot | report an issue\n<@528586514213371915> - $encoder-decoder\n<@290350813828874241> - $avali"
+        "<@385504411763605505> - discord bot | report an issue\n<@528586514213371915> - $encoder-decoder\n<@290350813828874241> - $avali\n<@351404235578933249> - new $awiki, $stbAwiki, cash system for $avali"
     ))
 
 @bot.command()
@@ -151,14 +151,11 @@ async def avali(ctx):
     #imag = pain.ava()
     await ctx.send(embed=embed)
 
+async def invite(ctx):
+  db.message(ctx.guild,ctx.author.id)
+  await ctx.send(embed= discord.Embed(title='https://discord.com/api/oauth2/authorize?client_id=876515016143147110&permissions=534723820608&scope=bot'))
+  
 
-@commands.cooldown(rate=1, per=4, type=commands.BucketType.user)
-@bot.command()
-async def isitell(ctx):
-    llet = (ctx.message.content.replace('$isitell', '  '))
-    llet = (ctx.message.content.replace('everyone', '-'))
-    llet = (ctx.message.content.replace(' @here', '-'))
-    await ctx.send(llet)
 import os,sys
 # Error reporter
 @bot.command()
