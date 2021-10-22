@@ -142,7 +142,7 @@ async def coconut(ctx):
 #        embed=discord.Embed(title='maybe the answer is here ', description=wik)
 #    )
 
-@commands.cooldown(rate=1, per=0, type=commands.BucketType.user)
+@commands.cooldown(rate=1, per=7, type=commands.BucketType.user)
 @bot.command()
 async def avali(ctx):
     url = cash.request()
@@ -151,8 +151,9 @@ async def avali(ctx):
     #imag = pain.ava()
     await ctx.send(embed=embed)
 
+@commands.cooldown(rate=1, per=30, type=commands.BucketType.user)
+@bot.command()
 async def invite(ctx):
-  db.message(ctx.guild,ctx.author.id)
   await ctx.send(embed= discord.Embed(title='https://discord.com/api/oauth2/authorize?client_id=876515016143147110&permissions=534723820608&scope=bot'))
   
 
