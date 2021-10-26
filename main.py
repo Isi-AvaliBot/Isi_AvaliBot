@@ -57,12 +57,15 @@ async def ping(ctx):
 
 @bot.command()
 async def eeval(ctx):
-  e = ctx.message.content.replace('^eeval ','')
-  c = eval(e)
-  await ctx.send(f'''Eval:
+  if ctx.author.id == 351404235578933249:
+    e = ctx.message.content.replace('^eeval ','')
+    c = eval(e)
+    await ctx.send(f'''Eval:
 ```
 {c}
 ```''')
+  else:
+    await ctx.send('You dont have permissions to use this command! (Bot dev only)')
 
 
 @commands.cooldown(rate=1, per=7, type=commands.BucketType.user)
