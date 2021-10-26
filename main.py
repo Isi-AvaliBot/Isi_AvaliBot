@@ -171,6 +171,7 @@ async def on_command_error(ctx, error):
   h = hook()
   h.send(description=f"Command failed!\n{error}") 
 
+@bot.command()
 async def list_commands(ctx):
   helptext = "```"
   for command in bot.commands:
