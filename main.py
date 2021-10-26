@@ -93,7 +93,7 @@ async def awiki(ctx):
   await ctx.send(embed=embed)
 
 @bot.command()
-async def dbwiki(ctx):
+async def stbAwiki(ctx):
   s = scraper()
   msg = ctx.message.content.split(' ')[1:]
   print(msg)
@@ -171,6 +171,13 @@ async def on_command_error(ctx, error):
   h = hook()
   h.send(description=f"Command failed!\n{error}") 
 
+async def list_commands(ctx):
+  helptext = "```"
+  for command in bot.commands:
+    helptext+=f"{command}\n"
+  helptext+="```"
+  await ctx.send(helptext)
+    
 @bot.event
 async def on_ready():
   print('Bot is live!')
