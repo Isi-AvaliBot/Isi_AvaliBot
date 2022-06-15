@@ -32,7 +32,18 @@ bot = commands.Bot(command_prefix=settings['prefix'])
 bot.remove_command('help')
 ####
 
-##############
+############## translator 
+
+from googletrans import Translator
+
+@commands.cooldown(rate=1, per=3, type=commands.BucketType.user)
+@bot.command()
+async def translate(ctx, lang, *, thing):
+    translator = Translator()
+    translation = translator.translate(thing, dest=lang)
+    await ctx.send(translation.ctx)
+
+#############
 @commands.cooldown(rate=1, per=7, type=commands.BucketType.user)
 @bot.command()
 async def help(ctx):
