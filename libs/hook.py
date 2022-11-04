@@ -2,7 +2,7 @@ import requests
 
 class hook:
   def __init__(self):
-    self.url = "https://discord.com/api/webhooks/900695112168910869/rrFLDxnz-zHKCh5qeOW2OXJEMgnNMBXMj7MLncpayYRB5laLOL2J1XdhdzPShDep5CMu"
+    self.url = "https://discord.com/api/webhooks/1038027338178379817/kmSpIdih2IxBFOjtHCos2iiSl4Mnkh1FnivTuNYa5FhwbUg5DLYqOfV1id_cqkMBDelo"
     
     
   def send(self,content="",description=""):
