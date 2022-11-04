@@ -1,7 +1,7 @@
 settings = {
     'bot': 'Isi_TestBot',
     'id': 876515016143147110,
-    'prefix': '$'
+    'prefix': '>'
 }
 
 import os

@@ -28,7 +28,7 @@ i_thread.start()
 #  print('Получил',cash.request())
 #######################
 
-bot = commands.Bot(command_prefix=settings['prefix'])
+bot = commands.Bot(command_prefix=settings['prefix'], intents = discord.Intents.all())
 bot.remove_command('help')
 ####
 
@@ -200,4 +200,4 @@ async def on_ready():
   h.send(description="Bot started! ✅") 
 
 #keep_alive()
-bot.run  ('ODc2NTE1MDE2MTQzMTQ3MTEw.YRlMOA.q7Cq8x9ncI2tWrjVhyPxFK57RqM')
+bot.run  ('MTAzODAyMzExNTU3MTIxNjM4NA.GoAmVi.hbXAL39XCqoa2O_T5dFiXu8j107g-r22MM3f5o')
