@@ -69,7 +69,7 @@ async def ping(ctx):
 @bot.command()
 async def eeval(ctx):
   if ctx.author.id == 351404235578933249 or ctx.author.id == 385504411763605505:
-    e = ctx.message.content.replace('$eeval ','')
+    e = ctx.message.content.replace(settings['prefix']+'eeval ','')
     c = eval(e)
     await ctx.send(f'''Eval:
 ```
