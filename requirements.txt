@@ -3,4 +3,5 @@ requests
 Cybernator
 Paginator
 bs4
+googletrans
 flask==2.0.2
