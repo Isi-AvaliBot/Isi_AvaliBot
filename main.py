@@ -3,7 +3,7 @@ import discord
 from discord.ext import commands
 
 from libs.scrape import scraper
-from run import keep_alive
+#from run import keep_alive
 #import database as db
 
 from config import settings
