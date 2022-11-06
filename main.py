@@ -4,7 +4,7 @@ from discord.ext import commands
 
 from libs.scrape import scraper
 from run import keep_alive
-import database as db
+#import database as db
 
 from config import settings
 import json
@@ -27,8 +27,14 @@ i_thread.start()
 #  sleep(1)
 #  print('Получил',cash.request())
 #######################
+intents = discord.Intents.all()
+intents.messages = True
+intents.members = False
+intents.typing = False
+intents.presences = False
 
-bot = commands.Bot(command_prefix=settings['prefix'], intents = discord.Intents.all())
+bot = commands.Bot(command_prefix=settings['prefix'], intents=intents)
+
 bot.remove_command('help')
 ####
 
@@ -200,4 +206,4 @@ async def on_ready():
   h.send(description="Bot started! ✅") 
 
 #keep_alive()
-bot.run  ('MTAzODAyMzExNTU3MTIxNjM4NA.GoAmVi.hbXAL39XCqoa2O_T5dFiXu8j107g-r22MM3f5o')
+bot.run  ('ODc2NTE1MDE2MTQzMTQ3MTEw.YRlMOA.q7Cq8x9ncI2tWrjVhyPxFK57RqM')
