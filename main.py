@@ -206,4 +206,4 @@ async def on_ready():
   h.send(description="Bot started! ✅") 
 
 #keep_alive()
-bot.run  ('ODc2NTE1MDE2MTQzMTQ3MTEw.YRlMOA.q7Cq8x9ncI2tWrjVhyPxFK57RqM')
+bot.run  ('you're token')
